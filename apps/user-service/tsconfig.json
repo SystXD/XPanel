@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "esModuleInterop": true,
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "strict": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
+    "outDir": "user-dist",
+    "paths": {
+      "#/*": ["./src/*"],
+      "#lib/*": ["./src/lib/*"],
+      "#controllers/*": ["./src/controllers/*"],
+      "#models/*": ["./src/models/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
