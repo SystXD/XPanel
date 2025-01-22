@@ -35,29 +35,29 @@ export async function publishToQueueAsync(
   }
 }
 
-export async function consumeQueueAsync(
+export function consumeQueueAsync(
   channel: Channel,
-  queue: string,
-  callback?: (err: any, result: string | null) => void
-): Promise<void> {
-  try {
-    await channel.assertQueue(queue, { durable: true });
-    channel.consume(queue, (msg) => {
-      if (msg) {
-        try {
-          channel.ack(msg);
-          const content = JSON.stringify(msg.content.toString());
-          return callback?.(null, content);
-        } catch (error) {
-          channel.nack(msg);
-          console.error(colors.red(`Error Parsing Queue Message`), error);
-          return callback?.(error, null);
+  queue: string
+): Promise<any> {
+  return new Promise<void>((resolve, reject) => {
+    try {
+      channel.assertQueue(queue, { durable: true });
+      channel.consume(queue, (msg) => {
+        if (msg) {
+          try {
+            channel.ack(msg);
+            const content = JSON.parse(msg.content.toString());
+            resolve(content);
+          } catch (error) {
+            channel.nack(msg);
+            console.error(colors.red(`Error Parsing Queue Message: `), error);
+            reject(error);
+          }
         }
-      }
-    });
-  } catch (error) {
-    console.error(colors.red(`Error consuming Queue`), error);
-
-    return;
-  }
+      });
+    } catch (error) {
+      console.error(colors.red(`Error consuming Queue: `), error);
+      reject(error);
+    }
+  });
 }

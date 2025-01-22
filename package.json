@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@types/amqplib": "^0.10.6",
+    "@types/dockerode": "^3.3.34",
     "@types/morgan": "^1.9.9",
     "prettier": "^3.2.5",
     "turbo": "^2.3.3",
@@ -24,6 +25,7 @@
   ],
   "dependencies": {
     "amqplib": "^0.10.5",
+    "dockerode": "^4.0.4",
     "morgan": "^1.10.0",
     "winston": "^3.17.0"
   }
