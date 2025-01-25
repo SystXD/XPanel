@@ -1,6 +1,6 @@
 import { createLogger, format, transports } from "winston";
 const { combine, timestamp, json, colorize } = format;
-
+import { connectRabbit } from './rabbit/promise'
 const consoleLogFormat = format.combine(
   format.colorize(),
   format.printf(({ level, message, timestamp }) => {
