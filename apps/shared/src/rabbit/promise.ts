@@ -1,5 +1,6 @@
 import { type Channel, connect, type Connection } from "amqplib";
 import colors from "../color";
+
 export async function connectRabbit(): Promise<{
   connection: Connection;
   channel: Channel;
@@ -12,7 +13,7 @@ export async function connectRabbit(): Promise<{
       channel,
     };
   } catch (error) {
-    console.error(colors.red(`Error connection to RabbitMQ`), error);
+    console.log(colors.red(`Error connection to RabbitMQ`), error);
     return null;
   }
 }
