@@ -1,0 +1,26 @@
+{
+  "name": "game-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "imports": {
+    "#/*": [
+      "./game-dist/*"
+    ],
+    "#lib/*": [
+      "./game-dist/lib/*"
+    ],
+    "#controllers/*": [
+      "./game-dist/controllers/*"
+    ],
+    "#routes/*": ["./game-dist/routes/*"],
+    "#middlewares/*": ["./game-dist/middlewares/*"]
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "description": ""
+}
